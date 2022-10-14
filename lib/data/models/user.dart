@@ -9,7 +9,9 @@ class User {
   String department;
   String batch;
   String profilePic;
-  bool? isAdmin;
+  bool isAdmin;
+  String uniNumber;
+  String location;
   User({
     required this.id,
     required this.name,
@@ -18,7 +20,9 @@ class User {
     required this.department,
     required this.batch,
     required this.profilePic,
-    this.isAdmin,
+    required this.isAdmin,
+    required this.uniNumber,
+    required this.location,
   });
 
   Map<String, dynamic> toMap() {
@@ -31,6 +35,8 @@ class User {
       'batch': batch,
       'profilePic': profilePic,
       'isAdmin': isAdmin,
+      'uniNumber': uniNumber,
+      'location': location,
     };
   }
 
@@ -43,7 +49,9 @@ class User {
       department: map['department'],
       batch: map['batch'],
       profilePic: map['profilePic'],
-      isAdmin: map['isAdmin'],
+      isAdmin: map['isAdmin'] ?? false,
+      uniNumber: map['uniNumber'],
+      location: map['location'],
     );
   }
 
