@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(fontFamily: 'Quicksandmed'),
       getPages: AppRouter.routs,
       initialRoute: AppRouter.getAuth(),
     );
