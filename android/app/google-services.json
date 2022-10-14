@@ -7,6 +7,8 @@
   "client": [
     {
       "client_info": {
+<<<<<<< HEAD
+=======
         "mobilesdk_app_id": "1:115523744678:android:2eaea5566b6ccbe088d567",
         "android_client_info": {
           "package_name": "com.exam"
@@ -36,6 +38,7 @@
     },
     {
       "client_info": {
+>>>>>>> master
         "mobilesdk_app_id": "1:115523744678:android:2f377c376e9b41fb88d567",
         "android_client_info": {
           "package_name": "com.example.eeese_hackathon"

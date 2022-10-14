@@ -1,4 +1,4 @@
-import 'package:eeese_hackathon/view/screens/events/events_screens.dart';
+import 'package:eeese_hackathon/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -16,8 +16,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: const EventsScreen(),
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Quicksandmed'),
+      getPages: AppRouter.routs,
+      initialRoute: AppRouter.getAuth(),
     );
   }
 }
