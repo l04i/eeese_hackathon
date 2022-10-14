@@ -68,7 +68,7 @@ class MyInputTheme {
 
 class MyTextStyle {
   TextStyle bigText(Color? color) =>
-      TextStyle(fontSize: Dimensions.font26, color: color ?? null);
+      TextStyle(fontSize: Dimensions.font26, color: color);
   TextStyle mediumText(Color? color) =>
       TextStyle(fontSize: Dimensions.font16, color: color);
 }

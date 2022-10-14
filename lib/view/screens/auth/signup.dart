@@ -8,7 +8,7 @@ import '../../../utils/style.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({Key? key}) : super(key: key);
-  List<String> deps = [
+  final List<String> deps = [
     'Electrical',
     'Mechanical',
     'Civil',

@@ -7,7 +7,7 @@ import 'package:path/path.dart';
 import 'dart:io';
 
 class ProfilePictureScreen extends StatefulWidget {
-  ProfilePictureScreen({super.key});
+  const ProfilePictureScreen({super.key});
 
   @override
   State<ProfilePictureScreen> createState() => _ProfilePictureScreenState();
@@ -75,7 +75,7 @@ class _ProfilePictureScreenState extends State<ProfilePictureScreen> {
                   Container(
                     height: 1,
                     width: 100,
-                    decoration: BoxDecoration(color: Colors.grey),
+                    decoration: const BoxDecoration(color: Colors.grey),
                   ),
                   Padding(
                     padding:
@@ -88,7 +88,7 @@ class _ProfilePictureScreenState extends State<ProfilePictureScreen> {
                   Container(
                     height: 1,
                     width: 100,
-                    decoration: BoxDecoration(color: Colors.grey),
+                    decoration: const BoxDecoration(color: Colors.grey),
                   ),
                 ],
               ),
