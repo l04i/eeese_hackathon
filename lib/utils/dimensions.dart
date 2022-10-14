@@ -43,7 +43,7 @@ class Dimensions {
   static double bottomSheetHeight = screenHeight / 8.5;
   static double loginContainer = screenHeight / 2;
   static double loginContainerHeight = screenHeight / 14;
-  static double productImgHeight = screenHeight / 1.8;
+  static double eventImgHeight = screenHeight / 1.8;
 
   static double isconSize24 = screenHeight / 35.17;
   static double isconSize16 = screenHeight / 52.7;
