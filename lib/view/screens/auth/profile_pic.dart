@@ -2,8 +2,6 @@ import 'package:eeese_hackathon/utils/dimensions.dart';
 import 'package:eeese_hackathon/utils/style.dart';
 import 'package:eeese_hackathon/view/widgets/app_buttons.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 import 'dart:io';
