@@ -8,6 +8,8 @@ class Event {
   String currentAttendance;
   String category;
   String picUrl;
+  bool isUpcoming;
+  String department;
   Event({
     required this.name,
     required this.dateTime,
@@ -16,6 +18,8 @@ class Event {
     required this.currentAttendance,
     required this.category,
     required this.picUrl,
+    required this.isUpcoming,
+    required this.department,
   });
 
   Map<String, dynamic> toMap() {
@@ -27,6 +31,8 @@ class Event {
       'currentAttendance': currentAttendance,
       'category': category,
       'picUrl': picUrl,
+      'isUpcoming': isUpcoming,
+      'department': department,
     };
   }
 
@@ -39,6 +45,8 @@ class Event {
       currentAttendance: map['currentAttendance'],
       category: map['category'],
       picUrl: map['picUrl'],
+      isUpcoming: map['isUpcoming'] ?? false,
+      department: map['department'],
     );
   }
 
