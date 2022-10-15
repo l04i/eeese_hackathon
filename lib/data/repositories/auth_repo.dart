@@ -47,7 +47,7 @@ class FirebaseAuthRepository extends AuthRepository {
         if (!userDoc.exists) {
           firestoreUserRefrence.doc(id).set(user.toJson());
         }
-        Get.offAllNamed(AppRouter.getProfilePic());
+        Get.offAllNamed(AppRouter.getHome());
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -79,7 +79,7 @@ class FirebaseAuthRepository extends AuthRepository {
         email: email,
         password: password,
       );
-      Get.offAllNamed('/main');
+      Get.offAllNamed(AppRouter.getHome());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         Get.back();

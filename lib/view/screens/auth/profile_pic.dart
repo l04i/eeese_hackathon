@@ -1,7 +1,10 @@
+import 'package:eeese_hackathon/controllers/auth_controller.dart';
+import 'package:eeese_hackathon/utils/colors.dart';
 import 'package:eeese_hackathon/utils/dimensions.dart';
 import 'package:eeese_hackathon/utils/style.dart';
 import 'package:eeese_hackathon/view/widgets/app_buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 import 'dart:io';
@@ -17,6 +20,7 @@ class _ProfilePictureScreenState extends State<ProfilePictureScreen> {
   File? _image;
 
   String? _pathName;
+  AuthController _controller = Get.find<AuthController>();
 
   final imagePicker = ImagePicker();
   Future<void> _selectImage(ImageSource imageSource) async {
@@ -106,8 +110,24 @@ class _ProfilePictureScreenState extends State<ProfilePictureScreen> {
               ),
             ),
             const Spacer(),
+            _image == null
+                ? const SizedBox(
+                    height: 0,
+                  )
+                : AppButton(
+                    onTap: () async {
+                      await _controller.uploadProfilePic(file: _image as File);
+                      await _controller.signUp();
+                    },
+                    color: Colors.deepOrangeAccent,
+                    text: 'Confirm'),
+            SizedBox(
+              height: Dimensions.height10,
+            ),
             AppButton(
-                onTap: () {}, color: Colors.deepOrangeAccent, text: 'Skip')
+                onTap: () async => await _controller.signUp(),
+                color: AppColors.lightergreyColor,
+                text: 'Skip')
           ],
         ),
       )),

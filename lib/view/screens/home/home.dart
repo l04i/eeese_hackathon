@@ -15,7 +15,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _screens = [const Home(), SearchScreen()];
-  int _currentScreen = 4;
+  int _currentScreen = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -289,7 +289,7 @@ class PastEventCard extends StatelessWidget {
                     const Spacer(),
                     Container(
                       height: Dimensions.height30,
-                      width: Dimensions.height60 * 2,
+                      width: Dimensions.height60 * 1.2,
                       decoration: BoxDecoration(
                         color: Colors.deepOrangeAccent,
                         borderRadius: BorderRadius.all(
@@ -298,7 +298,7 @@ class PastEventCard extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          'View Recap',
+                          'View',
                           style: MyTextStyle().mediumText(Colors.white),
                         ),
                       ),

@@ -1,3 +1,4 @@
+import 'package:eeese_hackathon/controllers/auth_controller.dart';
 import 'package:eeese_hackathon/view/screens/auth/auth.dart';
 import 'package:eeese_hackathon/view/screens/auth/login.dart';
 import 'package:eeese_hackathon/view/screens/auth/profile_pic.dart';
@@ -25,11 +26,20 @@ class AppRouter {
   static String getOnboarding() => onboarding;
 
   static List<GetPage> routs = [
-    GetPage(name: login, page: (() => const LoginScreen())),
-    GetPage(name: signup, page: (() => SignUpScreen())),
+    GetPage(
+        name: login,
+        binding: AuthScreensBinding(),
+        page: (() => LoginScreen())),
+    GetPage(
+        name: signup,
+        binding: AuthScreensBinding(),
+        page: (() => SignUpScreen())),
     GetPage(name: home, page: (() => const HomeScreen())),
     GetPage(name: auth, page: (() => const AuthScreen())),
-    GetPage(name: profilepic, page: (() => const ProfilePictureScreen())),
+    GetPage(
+        name: profilepic,
+        binding: AuthScreensBinding(),
+        page: (() => const ProfilePictureScreen())),
     GetPage(name: events, page: (() => const EventsScreen())),
     GetPage(name: onboarding, page: (() => const OnboardingScreen())),
   ];
