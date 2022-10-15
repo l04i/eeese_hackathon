@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field, depend_on_referenced_packages
+
 import 'dart:io';
 import 'package:eeese_hackathon/utils/colors.dart';
 import 'package:eeese_hackathon/utils/dimensions.dart';

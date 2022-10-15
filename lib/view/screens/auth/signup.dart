@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:eeese_hackathon/controllers/auth_controller.dart';
 import 'package:eeese_hackathon/routes/app_router.dart';
 import 'package:eeese_hackathon/utils/dimensions.dart';
@@ -9,7 +11,7 @@ import '../../../utils/style.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({Key? key}) : super(key: key);
-  AuthController _authController = Get.find<AuthController>();
+  final AuthController _authController = Get.find<AuthController>();
   final List<String> deps = [
     'Electrical',
     'Mechanical',

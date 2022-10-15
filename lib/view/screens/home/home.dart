@@ -21,8 +21,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _screens = [
     Home(),
-    SearchScreen(),
-    Text("11"),
+    const SearchScreen(),
+    const SizedBox(),
     const AccountScreen()
   ];
   int _currentScreen = 0;
@@ -269,7 +269,7 @@ class UpcomingEventCard extends StatelessWidget {
                 ),
                 child: Column(children: [
                   Text(
-                    '0' + event.dateTime.day.toString(),
+                    '0${event.dateTime.day}',
                     style: TextStyle(
                         fontSize: Dimensions.font16,
                         fontWeight: FontWeight.bold),
@@ -308,7 +308,7 @@ class UpcomingEventCard extends StatelessWidget {
                 width: Dimensions.width10,
               ),
               Text(
-                event.dateTime.hour.toString() + ' PM',
+                '${event.dateTime.hour} PM',
                 style: MyTextStyle().mediumText(Colors.white),
               ),
               const Spacer(),

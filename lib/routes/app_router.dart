@@ -6,7 +6,6 @@ import 'package:eeese_hackathon/view/screens/auth/profile_pic.dart';
 import 'package:eeese_hackathon/view/screens/auth/signup.dart';
 import 'package:eeese_hackathon/view/screens/committees_screen.dart';
 import 'package:eeese_hackathon/view/screens/events/add_event_screen.dart';
-import 'package:eeese_hackathon/view/screens/events/events_screens.dart';
 import 'package:eeese_hackathon/view/screens/onboarding_screen.dart';
 import 'package:eeese_hackathon/view/screens/home/home.dart';
 import 'package:eeese_hackathon/view/screens/splash_screen.dart';

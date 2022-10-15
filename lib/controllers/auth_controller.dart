@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:eeese_hackathon/data/models/user.dart';
-import 'package:eeese_hackathon/data/repositories/storage_repo.dart';
 import 'package:eeese_hackathon/helper/dependencies.dart';
 import 'package:eeese_hackathon/utils/constants.dart';
 import 'package:eeese_hackathon/view/widgets/show_loading.dart';

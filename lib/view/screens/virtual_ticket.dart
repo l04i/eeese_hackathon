@@ -108,8 +108,11 @@ class VirtualTicket extends StatelessWidget {
                 style:
                     MyTextStyle().bigText(Colors.black).copyWith(fontSize: 18),
               ),
+              SizedBox(
+                height: Dimensions.height10,
+              ),
               Center(
-                child: Container(
+                child: SizedBox(
                   width: double.maxFinite,
                   height: 100,
                   child: Image.network(

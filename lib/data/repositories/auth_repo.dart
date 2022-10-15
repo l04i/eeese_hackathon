@@ -1,12 +1,8 @@
-import 'dart:io';
-import 'dart:math';
-
 import 'package:eeese_hackathon/data/models/user.dart' as usr;
 import 'package:eeese_hackathon/routes/app_router.dart';
 import 'package:eeese_hackathon/utils/constants.dart';
 import 'package:eeese_hackathon/view/widgets/show_loading.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
 
 abstract class AuthRepository {
@@ -42,7 +38,6 @@ class FirebaseAuthRepository extends AuthRepository {
 
       // Create user document
       final uuid = auth.currentUser!.uid;
-      print("uuid is $uuid");
       await firestoreUserRefrence.doc(uuid).get().then((userDoc) {
         user.id = uuid;
 
