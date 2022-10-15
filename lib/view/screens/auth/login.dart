@@ -33,6 +33,7 @@ class LoginScreen extends StatelessWidget {
                 TextField(
                   controller: _controller.passwordController,
                   decoration: MyInputTheme.mytheme('Password'),
+                  obscureText: true,
                 ),
                 SizedBox(
                   height: Dimensions.height20,
