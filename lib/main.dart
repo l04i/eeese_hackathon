@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Quicksandmed'),
       getPages: AppRouter.routs,
-      initialRoute: AppRouter.getSplash(),
+      initialRoute: AppRouter.getAddEvent(),
     );
   }
 }

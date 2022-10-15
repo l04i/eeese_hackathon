@@ -3,6 +3,7 @@ import 'package:eeese_hackathon/view/screens/auth/login.dart';
 import 'package:eeese_hackathon/view/screens/auth/profile_pic.dart';
 import 'package:eeese_hackathon/view/screens/auth/signup.dart';
 import 'package:eeese_hackathon/view/screens/committees_screen.dart';
+import 'package:eeese_hackathon/view/screens/events/add_event_screen.dart';
 import 'package:eeese_hackathon/view/screens/events/events_screens.dart';
 import 'package:eeese_hackathon/view/screens/onboarding_screen.dart';
 import 'package:eeese_hackathon/view/screens/home/home.dart';
@@ -19,6 +20,7 @@ class AppRouter {
   static const String onboarding = '/onboarding';
   static const String committees = '/committees';
   static const String splash = '/splash';
+  static const String addEvent = '/add_event';
 
   static String getLogin() => login;
   static String getSignup() => signup;
@@ -29,6 +31,7 @@ class AppRouter {
   static String getOnboarding() => onboarding;
   static String getCommittees() => committees;
   static String getSplash() => splash;
+  static String getAddEvent() => addEvent;
 
   static List<GetPage> routs = [
     GetPage(name: login, page: (() => const LoginScreen())),
@@ -40,5 +43,6 @@ class AppRouter {
     GetPage(name: onboarding, page: (() => const OnboardingScreen())),
     GetPage(name: committees, page: (() => const CommitteesScreen())),
     GetPage(name: splash, page: (() => const SplashScreen())),
+    GetPage(name: addEvent, page: (() => const AddEventScreen())),
   ];
 }
