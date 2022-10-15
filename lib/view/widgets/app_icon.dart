@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 class AppIcon extends StatelessWidget {
   final IconData icon;
   final void Function() onPressed;
+  final Color iconColor;
 
   const AppIcon({
     Key? key,
     required this.onPressed,
     required this.icon,
+    this.iconColor = Colors.white,
   }) : super(key: key);
 
   @override
@@ -27,7 +29,7 @@ class AppIcon extends StatelessWidget {
         icon: Icon(
           icon,
           size: Dimensions.isconSize24,
-          color: Colors.white,
+          color: iconColor,
         ),
       )),
     );
