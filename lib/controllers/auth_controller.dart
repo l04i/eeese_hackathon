@@ -58,6 +58,10 @@ class AuthController extends GetxController {
     return await authRepository.getUserInfo();
   }
 
+  Future<void> signOut() async {
+    await authRepository.signOut();
+  }
+
   Future<void> uploadProfilePic({required File file}) async {
     profilePic = await storageRepository.uploadImageToStorage(
         childName: 'Profile_pictures', file: file, isEvent: false);

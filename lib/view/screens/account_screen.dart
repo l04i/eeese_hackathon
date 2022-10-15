@@ -1,3 +1,4 @@
+import 'package:eeese_hackathon/controllers/auth_controller.dart';
 import 'package:eeese_hackathon/utils/constants.dart';
 import 'package:eeese_hackathon/utils/dimensions.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,7 @@ class _AccountScreenState extends State<AccountScreen> {
                     height: Dimensions.height15,
                   ),
                   CircleAvatar(
-                    backgroundImage: NetworkImage('${userData!['profileURL']}'),
+                    backgroundImage: NetworkImage('${userData!['profilePic']}'),
                     radius: Dimensions.radius36 * 3,
                   ),
                   SizedBox(
@@ -49,15 +50,15 @@ class _AccountScreenState extends State<AccountScreen> {
                   AccountContainer(
                       icon: Icons.person,
                       color: Colors.deepOrange,
-                      text: '${userData!['name']}'),
+                      text: '${userData!['username']}'),
                   AccountContainer(
                       icon: Icons.email,
                       color: Colors.deepOrangeAccent,
                       text: '${userData!['email']}'),
                   AccountContainer(
-                      icon: Icons.phone,
+                      icon: Icons.vpn_key,
                       color: Colors.deepOrangeAccent,
-                      text: "${userData!['phoneNum']}"),
+                      text: "${userData!['uniNumber']}"),
                   Container(
                     height: Dimensions.height45,
                     width: Dimensions.height200,
@@ -68,8 +69,8 @@ class _AccountScreenState extends State<AccountScreen> {
                     ),
                     child: GestureDetector(
                       onTap: () async {
-                        // await Get.find<AuthController>().signOut();
-                        // Get.offNamed("/login");
+                        await Get.find<AuthController>().signOut();
+                        Get.offNamed("/login");
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
