@@ -1,4 +1,5 @@
 import 'package:eeese_hackathon/controllers/auth_controller.dart';
+import 'package:eeese_hackathon/view/screens/account_screen.dart';
 import 'package:eeese_hackathon/view/screens/auth/auth.dart';
 import 'package:eeese_hackathon/view/screens/auth/login.dart';
 import 'package:eeese_hackathon/view/screens/auth/profile_pic.dart';
@@ -22,6 +23,7 @@ class AppRouter {
   static const String committees = '/committees';
   static const String splash = '/splash';
   static const String addEvent = '/add_event';
+  static const String account = '/account';
 
   static String getLogin() => login;
   static String getSignup() => signup;
@@ -33,6 +35,7 @@ class AppRouter {
   static String getCommittees() => committees;
   static String getSplash() => splash;
   static String getAddEvent() => addEvent;
+  static String getAccount() => account;
 
   static List<GetPage> routs = [
     GetPage(
@@ -52,7 +55,16 @@ class AppRouter {
     GetPage(name: events, page: (() => const EventsScreen())),
     GetPage(name: onboarding, page: (() => const OnboardingScreen())),
     GetPage(name: committees, page: (() => const CommitteesScreen())),
-    GetPage(name: splash, page: (() => const SplashScreen())),
+    GetPage(
+      name: splash,
+      page: (() => const SplashScreen()),
+      binding: AuthScreensBinding(),
+    ),
     GetPage(name: addEvent, page: (() => const AddEventScreen())),
+    GetPage(
+      name: account,
+      page: (() => const AccountScreen()),
+      binding: AuthScreensBinding(),
+    ),
   ];
 }

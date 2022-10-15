@@ -23,9 +23,9 @@ class FirebaseAuthRepository extends AuthRepository {
     var snap = await firestore.collection("users").doc(uid).get();
     var snapshot = snap.data();
     return {
-      'name': snapshot!['name'],
+      'username': snapshot!['username'],
       'email': snapshot['email'],
-      'url': snapshot['profilePic'],
+      'uniNumber': snapshot['uniNumber'],
     };
   }
 
@@ -41,12 +41,13 @@ class FirebaseAuthRepository extends AuthRepository {
       );
 
       // Create user document
-      final id = auth.currentUser!.uid;
-      await firestoreUserRefrence.doc(id).get().then((userDoc) {
-        user.id = id;
-        if (!userDoc.exists) {
-          firestoreUserRefrence.doc(id).set(user.toJson());
-        }
+      final uuid = auth.currentUser!.uid;
+      print("uuid is $uuid");
+      await firestoreUserRefrence.doc(uuid).get().then((userDoc) {
+        user.id = uuid;
+
+        firestoreUserRefrence.doc(uuid).set(user.toMap());
+
         Get.offAllNamed(AppRouter.getHome());
       });
     } on FirebaseAuthException catch (e) {
