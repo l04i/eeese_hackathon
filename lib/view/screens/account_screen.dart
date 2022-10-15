@@ -1,3 +1,4 @@
+import 'package:eeese_hackathon/utils/constants.dart';
 import 'package:eeese_hackathon/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,11 +19,11 @@ class _AccountScreenState extends State<AccountScreen> {
   }
 
   Future<void> getUser() async {
-    // var snap =
-    //     await firestore.collection("users").doc(auth.currentUser!.uid).get();
-    // setState(() {
-    //   userData = snap.data();
-    // });
+    var snap =
+        await firestore.collection("users").doc(auth.currentUser!.uid).get();
+    setState(() {
+      userData = snap.data();
+    });
   }
 
   @override

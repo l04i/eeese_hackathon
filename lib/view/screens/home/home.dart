@@ -1,6 +1,7 @@
 import 'package:eeese_hackathon/utils/colors.dart';
 import 'package:eeese_hackathon/utils/dimensions.dart';
 import 'package:eeese_hackathon/utils/style.dart';
+import 'package:eeese_hackathon/view/screens/account_screen.dart';
 import 'package:eeese_hackathon/view/screens/search/search.dart';
 import 'package:eeese_hackathon/view/widgets/app_buttons.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<Widget> _screens = [const Home(), SearchScreen()];
+  final List<Widget> _screens = [
+    const Home(),
+    SearchScreen(),
+    Text("11"),
+    const AccountScreen()
+  ];
   int _currentScreen = 0;
 
   @override
@@ -50,10 +56,14 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: Icons.calendar_month_outlined,
               text: 'My Events',
             ),
-            const GButton(
-              icon: Icons.more_horiz_outlined,
-              text: '',
-            ),
+            GButton(
+                icon: Icons.person,
+                text: 'Profile',
+                onPressed: () {
+                  setState(() {
+                    _currentScreen = 3;
+                  });
+                }),
           ]),
         ),
         body: _screens[_currentScreen]);

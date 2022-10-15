@@ -41,12 +41,13 @@ class FirebaseAuthRepository extends AuthRepository {
       );
 
       // Create user document
-      final id = auth.currentUser!.uid;
-      await firestoreUserRefrence.doc(id).get().then((userDoc) {
-        user.id = id;
-        if (!userDoc.exists) {
-          firestoreUserRefrence.doc(id).set(user.toJson());
-        }
+      final uuid = auth.currentUser!.uid;
+      await firestoreUserRefrence.doc(uuid).get().then((userDoc) {
+        user.id = uuid;
+
+        firestoreUserRefrence.doc(uuid).set(user.toJson());
+        print("it doesn't");
+
         Get.offAllNamed(AppRouter.getHome());
       });
     } on FirebaseAuthException catch (e) {
