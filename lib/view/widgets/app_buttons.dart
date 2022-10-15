@@ -1,7 +1,6 @@
+import 'package:eeese_hackathon/utils/dimensions.dart';
+import 'package:eeese_hackathon/utils/style.dart';
 import 'package:flutter/material.dart';
-
-import '../../utils/dimensions.dart';
-import '../../utils/style.dart';
 
 class AppButton extends StatelessWidget {
   const AppButton(
