@@ -1,6 +1,8 @@
 import 'package:eeese_hackathon/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
+//custom styles for theme and texts
+
 class MyInputTheme {
   static InputDecoration mytheme(String hint) => InputDecoration(
         hintText: hint,

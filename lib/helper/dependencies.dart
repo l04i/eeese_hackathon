@@ -10,6 +10,7 @@ late FirebaseStorageRepository storageRepository;
 late FirebaseAuthRepository authRepository;
 late FirebaseEventsRepo eventsRepo;
 
+// used to initilize needed controllers and repos
 Future<void> init() async {
   await Firebase.initializeApp();
   storageRepository = FirebaseStorageRepository();

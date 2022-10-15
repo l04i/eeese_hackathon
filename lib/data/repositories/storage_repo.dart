@@ -11,7 +11,7 @@ abstract class StorageRepository {
 }
 
 class FirebaseStorageRepository extends StorageRepository {
-  //upload image to storage
+  //upload a picture to the sotarage works for both profile and events pages
   @override
   Future<String> uploadImageToStorage(
       {required String childName,

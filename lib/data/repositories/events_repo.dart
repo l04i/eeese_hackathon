@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eeese_hackathon/data/models/event.dart';
 import 'package:eeese_hackathon/utils/constants.dart';
+import 'package:uuid/uuid.dart';
 
 abstract class EventsRepo {
   Stream<QuerySnapshot<Map<String, dynamic>>> getEventsByCategory(
@@ -21,6 +22,7 @@ class FirebaseEventsRepo extends EventsRepo {
         .snapshots();
   }
 
+//adds an event to firestore
   @override
   Stream<QuerySnapshot<Map<String, dynamic>>> getEventsByTime(
       {required bool isUpcoming}) {
@@ -31,5 +33,7 @@ class FirebaseEventsRepo extends EventsRepo {
   }
 
   @override
-  Future<void> addEvent(Event event) async {}
+  Future<void> addEvent(Event event) async {
+    firestoreUserRefrence.doc(const Uuid().v4()).set(event.toMap());
+  }
 }
