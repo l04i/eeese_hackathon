@@ -10,10 +10,12 @@ class Event {
   String picUrl;
   bool isUpcoming;
   String department;
+  String location;
   Event({
     required this.name,
     required this.dateTime,
     required this.description,
+    required this.location,
     required this.maxAttendance,
     required this.currentAttendance,
     required this.category,
@@ -33,6 +35,7 @@ class Event {
       'picUrl': picUrl,
       'isUpcoming': isUpcoming,
       'department': department,
+      'location': location,
     };
   }
 
@@ -47,6 +50,7 @@ class Event {
       picUrl: map['picUrl'],
       isUpcoming: map['isUpcoming'] ?? false,
       department: map['department'],
+      location: map['location'],
     );
   }
 
