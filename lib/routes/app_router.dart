@@ -13,6 +13,7 @@ import 'package:eeese_hackathon/view/screens/splash_screen.dart';
 import 'package:eeese_hackathon/view/screens/virtual_ticket.dart';
 import 'package:get/get.dart';
 
+//used to simplify the routing using GetPages
 class AppRouter {
   static const String login = '/login';
   static const String signup = '/signup';

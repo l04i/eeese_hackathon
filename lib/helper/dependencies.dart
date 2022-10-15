@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 late FirebaseStorageRepository storageRepository;
 late FirebaseAuthRepository authRepository;
 
+// used to initilize needed controllers and repos
 Future<void> init() async {
   await Firebase.initializeApp();
   storageRepository = FirebaseStorageRepository();

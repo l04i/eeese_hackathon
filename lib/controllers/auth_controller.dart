@@ -29,6 +29,7 @@ class AuthController extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController uniNumController = TextEditingController();
 
+  //insuring that the user didn't enter an empty field
   void validateUserInfo() {
     if (nameController.text.isEmpty ||
         emailController.text.isEmpty ||
@@ -42,6 +43,7 @@ class AuthController extends GetxController {
     }
   }
 
+  //decides what screen the user should be redirected to
   Future<String> setInitialScreen() async {
     bool isLoggedIn = auth.currentUser != null;
     SharedPreferences pref = await SharedPreferences.getInstance();
