@@ -84,8 +84,25 @@ class SignUpScreen extends StatelessWidget {
                 height: Dimensions.height20,
               ),
               TextField(
+                obscureText: true,
                 controller: _authController.passwordController,
                 decoration: MyInputTheme.mytheme('Password'),
+              ),
+              SizedBox(
+                height: Dimensions.height20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Already have an account?  '),
+                  InkWell(
+                    onTap: () => Get.toNamed(AppRouter.getLogin()),
+                    child: const Text(
+                      'Login',
+                      style: TextStyle(color: Colors.deepOrangeAccent),
+                    ),
+                  )
+                ],
               ),
               SizedBox(
                 height: Dimensions.height45,
