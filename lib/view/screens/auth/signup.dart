@@ -52,8 +52,8 @@ class SignUpScreen extends StatelessWidget {
                 decoration: MyInputTheme.mytheme('Department'),
                 items: deps
                     .map((e) => DropdownMenuItem<String>(
-                          child: Text(e),
                           value: e,
+                          child: Text(e),
                         ))
                     .toList(),
                 onChanged: ((value) {}),
@@ -65,8 +65,8 @@ class SignUpScreen extends StatelessWidget {
                 decoration: MyInputTheme.mytheme('Year'),
                 items: years
                     .map((e) => DropdownMenuItem<String>(
-                          child: Text(e),
                           value: e,
+                          child: Text(e),
                         ))
                     .toList(),
                 onChanged: ((value) {}),
