@@ -3,18 +3,16 @@ import 'dart:core';
 
 class User {
   String id;
-  String name;
-
+  String username;
   String email;
   String department;
   String year;
   String profilePic;
   bool isAdmin;
   String uniNumber;
-
   User({
     required this.id,
-    required this.name,
+    required this.username,
     required this.email,
     required this.department,
     required this.year,
@@ -26,10 +24,10 @@ class User {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'name': name,
+      'username': username,
       'email': email,
       'department': department,
-      'year': year,
+      'batch': year,
       'profilePic': profilePic,
       'isAdmin': isAdmin,
       'uniNumber': uniNumber,
@@ -39,10 +37,10 @@ class User {
   factory User.fromMap(Map<String, dynamic> map) {
     return User(
       id: map['id'],
-      name: map['name'],
+      username: map['username'],
       email: map['email'],
       department: map['department'],
-      year: map['year'],
+      year: map['batch'],
       profilePic: map['profilePic'],
       isAdmin: map['isAdmin'] ?? false,
       uniNumber: map['uniNumber'],

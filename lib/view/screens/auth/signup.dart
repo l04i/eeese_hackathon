@@ -1,3 +1,4 @@
+import 'package:eeese_hackathon/controllers/auth_controller.dart';
 import 'package:eeese_hackathon/routes/app_router.dart';
 import 'package:eeese_hackathon/utils/dimensions.dart';
 import 'package:eeese_hackathon/view/widgets/app_buttons.dart';
@@ -8,6 +9,7 @@ import '../../../utils/style.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({Key? key}) : super(key: key);
+  AuthController _authController = Get.find<AuthController>();
   final List<String> deps = [
     'Electrical',
     'Mechanical',
@@ -31,18 +33,21 @@ class SignUpScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               TextField(
+                controller: _authController.nameController,
                 decoration: MyInputTheme.mytheme('Name'),
               ),
               SizedBox(
                 height: Dimensions.height20,
               ),
               TextField(
+                controller: _authController.emailController,
                 decoration: MyInputTheme.mytheme('Email'),
               ),
               SizedBox(
                 height: Dimensions.height20,
               ),
               TextField(
+                controller: _authController.uniNumController,
                 decoration: MyInputTheme.mytheme('University number'),
               ),
               SizedBox(
@@ -56,7 +61,9 @@ class SignUpScreen extends StatelessWidget {
                           child: Text(e),
                         ))
                     .toList(),
-                onChanged: ((value) {}),
+                onChanged: ((value) {
+                  _authController.department = value as String;
+                }),
               ),
               SizedBox(
                 height: Dimensions.height20,
@@ -69,19 +76,39 @@ class SignUpScreen extends StatelessWidget {
                           child: Text(e),
                         ))
                     .toList(),
-                onChanged: ((value) {}),
+                onChanged: ((value) {
+                  _authController.year = value as String;
+                }),
               ),
               SizedBox(
                 height: Dimensions.height20,
               ),
               TextField(
+                obscureText: true,
+                controller: _authController.passwordController,
                 decoration: MyInputTheme.mytheme('Password'),
+              ),
+              SizedBox(
+                height: Dimensions.height20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Already have an account?  '),
+                  InkWell(
+                    onTap: () => Get.toNamed(AppRouter.getLogin()),
+                    child: const Text(
+                      'Login',
+                      style: TextStyle(color: Colors.deepOrangeAccent),
+                    ),
+                  )
+                ],
               ),
               SizedBox(
                 height: Dimensions.height45,
               ),
               AppButton(
-                  onTap: () => Get.toNamed(AppRouter.getProfilePic()),
+                  onTap: () => _authController.validateUserInfo(),
                   color: Colors.deepOrangeAccent,
                   text: 'Next')
             ],
