@@ -1,3 +1,4 @@
+import 'package:eeese_hackathon/routes/app_router.dart';
 import 'package:eeese_hackathon/utils/colors.dart';
 import 'package:eeese_hackathon/utils/dimensions.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +61,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               onTap: () async {
                 SharedPreferences pref = await SharedPreferences.getInstance();
                 pref.setBool("showHome", true);
-                Get.offNamed("/login");
+                Get.offNamed(AppRouter.getLogin());
               },
               child: Container(
                 margin: EdgeInsets.symmetric(

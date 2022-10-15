@@ -105,7 +105,7 @@ class _ProfilePictureScreenState extends State<ProfilePictureScreen> {
                 style: MyTextStyle().bigText(Colors.grey),
               ),
             ),
-            Spacer(),
+            const Spacer(),
             AppButton(
                 onTap: () {}, color: Colors.deepOrangeAccent, text: 'Skip')
           ],
