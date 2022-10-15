@@ -1,10 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:eeese_hackathon/controllers/home_controller.dart';
+import 'package:eeese_hackathon/data/models/event.dart';
 import 'package:eeese_hackathon/utils/colors.dart';
 import 'package:eeese_hackathon/utils/dimensions.dart';
 import 'package:eeese_hackathon/utils/style.dart';
+import 'package:eeese_hackathon/view/screens/events/events_screens.dart';
 import 'package:eeese_hackathon/view/screens/account_screen.dart';
 import 'package:eeese_hackathon/view/screens/search/search.dart';
-import 'package:eeese_hackathon/view/widgets/app_buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,9 +20,9 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _screens = [
-    const Home(),
-    SearchScreen(),
-    Text("11"),
+    Home(),
+    const SearchScreen(),
+    const SizedBox(),
     const AccountScreen()
   ];
   int _currentScreen = 0;
@@ -71,207 +75,279 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+  Home({super.key});
   final int _selected = 0;
+  final HomeController _controller = Get.find<HomeController>();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Padding(
       padding: EdgeInsets.all(Dimensions.width10),
-      child: ListView(children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'EVENTOS',
-              style: MyTextStyle()
-                  .bigText(Colors.black)
-                  .copyWith(fontWeight: FontWeight.bold),
-            )
-          ],
-        ),
-        SizedBox(
-          height: Dimensions.height15,
-        ),
-        Text(
-          'Discover Events',
-          style: TextStyle(fontSize: Dimensions.font26, color: Colors.black45),
-        ),
-        Row(
-          children: [
-            Text(
-              'October ',
-              style: TextStyle(
-                fontSize: Dimensions.font22,
+      child: SingleChildScrollView(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'EVENTOS',
+                style: MyTextStyle()
+                    .bigText(Colors.black)
+                    .copyWith(fontWeight: FontWeight.bold),
+              )
+            ],
+          ),
+          SizedBox(
+            height: Dimensions.height15,
+          ),
+          Text(
+            'Discover Events',
+            style:
+                TextStyle(fontSize: Dimensions.font26, color: Colors.black45),
+          ),
+          Row(
+            children: [
+              Text(
+                'October ',
+                style: TextStyle(
+                  fontSize: Dimensions.font22,
+                ),
               ),
-            ),
-            Text(
-              '2022 ',
-              style: TextStyle(
-                  fontSize: Dimensions.font22, color: Colors.deepOrangeAccent),
-            ),
-          ],
-        ),
-        SizedBox(
-          height: Dimensions.height20,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            ChoiceChip(
-              label: Text(
-                'Social',
+              Text(
+                '2022 ',
+                style: TextStyle(
+                    fontSize: Dimensions.font22,
+                    color: Colors.deepOrangeAccent),
               ),
-              selected: _selected == 0,
-              selectedColor: Colors.deepOrangeAccent,
-              disabledColor: AppColors.lightergreyColor,
-              labelStyle: MyTextStyle().mediumText(Colors.white),
-              labelPadding: EdgeInsets.symmetric(
-                  horizontal: Dimensions.height15,
-                  vertical: Dimensions.height5),
-            ),
-            ChoiceChip(
-              label: Text('Academic'),
-              selected: _selected == 1,
-              selectedColor: Colors.deepOrangeAccent,
-              disabledColor: AppColors.lightergreyColor,
-              labelStyle: MyTextStyle().mediumText(Colors.white),
-              labelPadding: EdgeInsets.symmetric(
-                  horizontal: Dimensions.height15,
-                  vertical: Dimensions.height5),
-            ),
-            ChoiceChip(
-              label: Text('Sport'),
-              selected: _selected == 2,
-              selectedColor: Colors.deepOrangeAccent,
-              disabledColor: AppColors.lightergreyColor,
-              labelStyle: MyTextStyle().mediumText(Colors.white),
-              labelPadding: EdgeInsets.symmetric(
-                  horizontal: Dimensions.height15,
-                  vertical: Dimensions.height5),
-            ),
-          ],
-        ),
-        SizedBox(
-          height: Dimensions.height20,
-        ),
-        const UpcomingEventCard(),
-        SizedBox(height: Dimensions.height20),
-        Text(
-          'Past Events',
-          style: TextStyle(fontSize: Dimensions.font26, color: Colors.black45),
-        ),
-        SizedBox(height: Dimensions.height20),
-        const PastEventCard(),
-      ]),
+            ],
+          ),
+          SizedBox(
+            height: Dimensions.height20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ChoiceChip(
+                label: const Text(
+                  'Social',
+                ),
+                selected: _selected == 0,
+                selectedColor: Colors.deepOrangeAccent,
+                disabledColor: AppColors.lightergreyColor,
+                labelStyle: MyTextStyle().mediumText(Colors.white),
+                labelPadding: EdgeInsets.symmetric(
+                    horizontal: Dimensions.height15,
+                    vertical: Dimensions.height5),
+              ),
+              ChoiceChip(
+                label: const Text('Academic'),
+                selected: _selected == 1,
+                selectedColor: Colors.deepOrangeAccent,
+                disabledColor: AppColors.lightergreyColor,
+                labelStyle: MyTextStyle().mediumText(Colors.white),
+                labelPadding: EdgeInsets.symmetric(
+                    horizontal: Dimensions.height15,
+                    vertical: Dimensions.height5),
+              ),
+              ChoiceChip(
+                label: const Text('Sport'),
+                selected: _selected == 2,
+                selectedColor: Colors.deepOrangeAccent,
+                disabledColor: AppColors.lightergreyColor,
+                labelStyle: MyTextStyle().mediumText(Colors.white),
+                labelPadding: EdgeInsets.symmetric(
+                    horizontal: Dimensions.height15,
+                    vertical: Dimensions.height5),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: Dimensions.height20,
+          ),
+          StreamBuilder(
+            stream: _controller.getEvents(isUpcoming: true),
+            builder: (context,
+                AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.deepOrangeAccent,
+                  ),
+                );
+              } else {
+                return SizedBox(
+                  width: double.maxFinite,
+                  height: 260,
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: snapshot.data!.docs.length,
+                      itemBuilder: ((context, index) {
+                        QueryDocumentSnapshot snapp =
+                            snapshot.data!.docs[index];
+
+                        return UpcomingEventCard(
+                          event: Event.fromMap(
+                              snapp.data() as Map<String, dynamic>),
+                        );
+                      })),
+                );
+              }
+            },
+          ),
+          SizedBox(height: Dimensions.height20),
+          Text(
+            'Past Events',
+            style:
+                TextStyle(fontSize: Dimensions.font26, color: Colors.black45),
+          ),
+          SizedBox(height: Dimensions.height10),
+          StreamBuilder(
+            stream: _controller.getEvents(isUpcoming: false),
+            builder: (context,
+                AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.deepOrangeAccent,
+                  ),
+                );
+              } else {
+                return ListView.builder(
+                    shrinkWrap: true,
+                    physics: const ClampingScrollPhysics(),
+                    itemCount: snapshot.data!.docs.length,
+                    itemBuilder: ((context, index) {
+                      QueryDocumentSnapshot snapp = snapshot.data!.docs[index];
+
+                      return PastEventCard(
+                        event:
+                            Event.fromMap(snapp.data() as Map<String, dynamic>),
+                      );
+                    }));
+              }
+            },
+          ),
+        ]),
+      ),
     ));
   }
 }
 
 class UpcomingEventCard extends StatelessWidget {
-  const UpcomingEventCard({Key? key}) : super(key: key);
+  const UpcomingEventCard({
+    Key? key,
+    required this.event,
+  }) : super(key: key);
+  final Event event;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(Dimensions.width10),
-      height: Dimensions.height250,
-      decoration: BoxDecoration(
-          color: AppColors.greyColor,
-          image: const DecorationImage(
-              image: AssetImage('assets/images/event1.jpg'), fit: BoxFit.cover),
-          borderRadius: BorderRadius.all(Radius.circular(Dimensions.radius20))),
-      child: Column(children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Container(
-              height: Dimensions.height45,
-              width: Dimensions.height45,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius:
-                    BorderRadius.all(Radius.circular(Dimensions.radius15)),
+    return InkWell(
+      onTap: (() => Get.to(() => EventsScreen(event: event))),
+      child: Container(
+        padding: EdgeInsets.all(Dimensions.width10),
+        margin: EdgeInsets.symmetric(horizontal: Dimensions.width10),
+        height: Dimensions.height250,
+        width: Dimensions.height250,
+        decoration: BoxDecoration(
+            color: AppColors.greyColor,
+            image: DecorationImage(
+                image: NetworkImage(event.picUrl), fit: BoxFit.cover),
+            borderRadius:
+                BorderRadius.all(Radius.circular(Dimensions.radius20))),
+        child: Column(children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Container(
+                height: Dimensions.height45,
+                width: Dimensions.height45,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius:
+                      BorderRadius.all(Radius.circular(Dimensions.radius15)),
+                ),
+                child: Column(children: [
+                  Text(
+                    '0${event.dateTime.day}',
+                    style: TextStyle(
+                        fontSize: Dimensions.font16,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    event.dateTime.month.toString(),
+                    style: MyTextStyle().mediumText(Colors.deepOrangeAccent),
+                  ),
+                ]),
+              )
+            ],
+          ),
+          const Spacer(),
+          Row(
+            children: [
+              const Icon(
+                Icons.location_pin,
+                color: Colors.deepOrangeAccent,
               ),
-              child: Column(children: [
-                Text(
-                  '09',
-                  style: TextStyle(
-                      fontSize: Dimensions.font16, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  'OCT',
-                  style: MyTextStyle().mediumText(Colors.deepOrangeAccent),
-                ),
-              ]),
-            )
-          ],
-        ),
-        const Spacer(),
-        Row(
-          children: [
-            const Icon(
-              Icons.location_pin,
-              color: Colors.deepOrangeAccent,
-            ),
-            SizedBox(
-              width: Dimensions.width10,
-            ),
-            Text(
-              'Al-Turabi Hall',
-              style: MyTextStyle().mediumText(Colors.white),
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            const Icon(
-              Icons.schedule,
-              color: Colors.deepOrangeAccent,
-            ),
-            SizedBox(
-              width: Dimensions.width10,
-            ),
-            Text(
-              '1:00 PM',
-              style: MyTextStyle().mediumText(Colors.white),
-            ),
-            const Spacer(),
-            Text(
-              'Social ',
-              style: MyTextStyle().mediumText(Colors.white),
-            ),
-          ],
-        ),
-      ]),
+              SizedBox(
+                width: Dimensions.width10,
+              ),
+              Text(
+                event.location,
+                style: MyTextStyle().mediumText(Colors.white),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              const Icon(
+                Icons.schedule,
+                color: Colors.deepOrangeAccent,
+              ),
+              SizedBox(
+                width: Dimensions.width10,
+              ),
+              Text(
+                '${event.dateTime.hour} PM',
+                style: MyTextStyle().mediumText(Colors.white),
+              ),
+              const Spacer(),
+              Text(
+                event.category,
+                style: MyTextStyle().mediumText(Colors.white),
+              ),
+            ],
+          ),
+        ]),
+      ),
     );
   }
 }
 
 class PastEventCard extends StatelessWidget {
-  const PastEventCard({super.key});
+  const PastEventCard({super.key, required this.event});
+  final Event event;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Container(
+          margin: EdgeInsets.symmetric(vertical: Dimensions.height10),
           height: Dimensions.height120,
           width: Dimensions.height120,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(
               Radius.circular(Dimensions.radius20),
             ),
-            image: const DecorationImage(
-                image: AssetImage('assets/images/event1.jpg'),
-                fit: BoxFit.cover),
+            image: DecorationImage(
+                image: NetworkImage(event.picUrl), fit: BoxFit.cover),
           ),
         ),
         Expanded(
           child: Container(
             padding: EdgeInsets.all(Dimensions.height10),
-            height: Dimensions.height120 * 0.75,
+            height: Dimensions.height120 * 0.85,
             decoration: BoxDecoration(
                 color: AppColors.greyColor,
                 borderRadius: BorderRadius.only(
@@ -282,18 +358,18 @@ class PastEventCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Creativity Day',
+                  event.name,
                   style: MyTextStyle().mediumText(Colors.black),
                 ),
                 Text(
-                  '09 - Sep',
+                  event.dateTime.toIso8601String().substring(0, 10),
                   style: MyTextStyle().mediumText(Colors.black54),
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'Social',
+                      event.category,
                       style: MyTextStyle().mediumText(Colors.black54),
                     ),
                     const Spacer(),
@@ -307,9 +383,12 @@ class PastEventCard extends StatelessWidget {
                         ),
                       ),
                       child: Center(
-                        child: Text(
-                          'View',
-                          style: MyTextStyle().mediumText(Colors.white),
+                        child: InkWell(
+                          onTap: () => Get.to(() => EventsScreen(event: event)),
+                          child: Text(
+                            'View',
+                            style: MyTextStyle().mediumText(Colors.white),
+                          ),
                         ),
                       ),
                     )

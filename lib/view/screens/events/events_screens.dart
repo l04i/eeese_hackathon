@@ -1,15 +1,50 @@
+import 'package:eeese_hackathon/data/models/event.dart';
 import 'package:eeese_hackathon/utils/colors.dart';
 import 'package:eeese_hackathon/utils/dimensions.dart';
+import 'package:eeese_hackathon/utils/style.dart';
 import 'package:eeese_hackathon/view/widgets/app_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class EventsScreen extends StatelessWidget {
-  const EventsScreen({Key? key}) : super(key: key);
+class EventsScreen extends StatefulWidget {
+  const EventsScreen({Key? key, required this.event}) : super(key: key);
+  final Event event;
 
+  @override
+  State<EventsScreen> createState() => _EventsScreenState();
+}
+
+class _EventsScreenState extends State<EventsScreen> {
+  bool isRegistered = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: widget.event.isUpcoming
+          ? InkWell(
+              onTap: () {
+                setState(() {
+                  isRegistered = !isRegistered;
+                });
+              },
+              child: Container(
+                height: Dimensions.height45,
+                width: Dimensions.height60 * 1.8,
+                decoration: BoxDecoration(
+                    color: isRegistered
+                        ? AppColors.lightergreyColor
+                        : Colors.deepOrangeAccent,
+                    borderRadius:
+                        BorderRadius.all(Radius.circular(Dimensions.radius15))),
+                child: Center(
+                  child: Text(
+                    isRegistered ? 'Registered' : 'Register Now!',
+                    style: MyTextStyle().mediumText(
+                        isRegistered ? Colors.black45 : Colors.white),
+                  ),
+                ),
+              ),
+            )
+          : null,
       body: Stack(
         children: [
           //event image
@@ -19,10 +54,9 @@ class EventsScreen extends StatelessWidget {
             child: Container(
               height: Dimensions.eventImgHeight,
               width: double.maxFinite,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(
-                      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png"),
+                  image: NetworkImage(widget.event.picUrl),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -67,7 +101,7 @@ class EventsScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Title",
+                      widget.event.name,
                       style: titleTextStyle(),
                     ),
                     const SizedBox(
@@ -77,13 +111,15 @@ class EventsScreen extends StatelessWidget {
                       children: [
                         const Icon(
                           Icons.calendar_month,
-                          color: AppColors.lightergreyColor,
+                          color: Colors.deepOrangeAccent,
                         ),
                         const SizedBox(
                           width: 10,
                         ),
                         Text(
-                          "Firday, june 27",
+                          widget.event.dateTime
+                              .toIso8601String()
+                              .substring(0, 10),
                           style: bodyTextStyle(),
                         ),
                         const SizedBox(
@@ -91,13 +127,15 @@ class EventsScreen extends StatelessWidget {
                         ),
                         const Icon(
                           Icons.schedule,
-                          color: AppColors.lightergreyColor,
+                          color: Colors.deepOrangeAccent,
                         ),
                         const SizedBox(
                           width: 10,
                         ),
                         Text(
-                          "20:00",
+                          widget.event.dateTime
+                              .toIso8601String()
+                              .substring(12, 16),
                           style: bodyTextStyle(),
                         ),
                       ],
@@ -105,7 +143,8 @@ class EventsScreen extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    Text("70/90  joined", style: bodyTextStyle()),
+                    Text("${widget.event.currentAttendance}  joined",
+                        style: bodyTextStyle()),
                     const SizedBox(
                       height: 20,
                     ),
@@ -117,7 +156,7 @@ class EventsScreen extends StatelessWidget {
                       height: 20,
                     ),
                     Text(
-                      "anything",
+                      widget.event.description,
                       style: bodyTextStyle(),
                     ),
                   ],

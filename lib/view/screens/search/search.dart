@@ -4,8 +4,8 @@ import 'package:eeese_hackathon/utils/style.dart';
 import 'package:flutter/material.dart';
 
 class SearchScreen extends StatelessWidget {
-  SearchScreen({Key? key}) : super(key: key);
-  int _selected = 0;
+  const SearchScreen({Key? key}) : super(key: key);
+  final int _selected = 0;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -43,7 +43,7 @@ class SearchScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ChoiceChip(
-                  label: Text(
+                  label: const Text(
                     'Social',
                   ),
                   selected: _selected == 0,
@@ -55,7 +55,7 @@ class SearchScreen extends StatelessWidget {
                       vertical: Dimensions.height5),
                 ),
                 ChoiceChip(
-                  label: Text('Academic'),
+                  label: const Text('Academic'),
                   selected: _selected == 1,
                   selectedColor: Colors.deepOrangeAccent,
                   disabledColor: AppColors.lightergreyColor,
@@ -65,7 +65,7 @@ class SearchScreen extends StatelessWidget {
                       vertical: Dimensions.height5),
                 ),
                 ChoiceChip(
-                  label: Text('Sport'),
+                  label: const Text('Sport'),
                   selected: _selected == 2,
                   selectedColor: Colors.deepOrangeAccent,
                   disabledColor: AppColors.lightergreyColor,

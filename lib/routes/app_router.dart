@@ -6,12 +6,13 @@ import 'package:eeese_hackathon/view/screens/auth/profile_pic.dart';
 import 'package:eeese_hackathon/view/screens/auth/signup.dart';
 import 'package:eeese_hackathon/view/screens/committees_screen.dart';
 import 'package:eeese_hackathon/view/screens/events/add_event_screen.dart';
-import 'package:eeese_hackathon/view/screens/events/events_screens.dart';
 import 'package:eeese_hackathon/view/screens/onboarding_screen.dart';
 import 'package:eeese_hackathon/view/screens/home/home.dart';
 import 'package:eeese_hackathon/view/screens/splash_screen.dart';
 import 'package:eeese_hackathon/view/screens/virtual_ticket.dart';
 import 'package:get/get.dart';
+
+import '../controllers/home_controller.dart';
 
 //used to simplify the routing using GetPages
 class AppRouter {
@@ -50,13 +51,15 @@ class AppRouter {
         name: signup,
         binding: AuthScreensBinding(),
         page: (() => SignUpScreen())),
-    GetPage(name: home, page: (() => const HomeScreen())),
+    GetPage(
+        name: home,
+        binding: HomeControllerBinding(),
+        page: (() => const HomeScreen())),
     GetPage(name: auth, page: (() => const AuthScreen())),
     GetPage(
         name: profilepic,
         binding: AuthScreensBinding(),
         page: (() => const ProfilePictureScreen())),
-    GetPage(name: events, page: (() => const EventsScreen())),
     GetPage(name: onboarding, page: (() => const OnboardingScreen())),
     GetPage(name: committees, page: (() => const CommitteesScreen())),
     GetPage(

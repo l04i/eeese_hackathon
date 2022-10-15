@@ -1,6 +1,3 @@
-import 'dart:io';
-import 'dart:math';
-
 import 'package:eeese_hackathon/data/models/user.dart' as usr;
 import 'package:eeese_hackathon/routes/app_router.dart';
 import 'package:eeese_hackathon/utils/constants.dart';
@@ -41,7 +38,6 @@ class FirebaseAuthRepository extends AuthRepository {
 
       // Create user document
       final uuid = auth.currentUser!.uid;
-      print("uuid is $uuid");
       await firestoreUserRefrence.doc(uuid).get().then((userDoc) {
         user.id = uuid;
 

@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field, depend_on_referenced_packages
+
 import 'package:eeese_hackathon/controllers/auth_controller.dart';
 import 'package:eeese_hackathon/utils/colors.dart';
 import 'package:eeese_hackathon/utils/dimensions.dart';
@@ -20,7 +22,7 @@ class _ProfilePictureScreenState extends State<ProfilePictureScreen> {
   File? _image;
 
   String? _pathName;
-  AuthController _controller = Get.find<AuthController>();
+  final AuthController _controller = Get.find<AuthController>();
 
   final imagePicker = ImagePicker();
   Future<void> _selectImage(ImageSource imageSource) async {
