@@ -1,6 +1,8 @@
+import 'package:eeese_hackathon/controllers/auth_controller.dart';
 import 'package:eeese_hackathon/data/repositories/auth_repo.dart';
 import 'package:eeese_hackathon/data/repositories/storage_repo.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:get/get.dart';
 
 import '../data/repositories/events_repo.dart';
 
@@ -13,4 +15,5 @@ Future<void> init() async {
   storageRepository = FirebaseStorageRepository();
   authRepository = FirebaseAuthRepository();
   eventsRepo = FirebaseEventsRepo();
+  Get.lazyPut(() => AuthController());
 }

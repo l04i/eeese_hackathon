@@ -1,4 +1,5 @@
 import 'package:eeese_hackathon/controllers/auth_controller.dart';
+import 'package:eeese_hackathon/view/screens/account_screen.dart';
 import 'package:eeese_hackathon/view/screens/auth/auth.dart';
 import 'package:eeese_hackathon/view/screens/auth/login.dart';
 import 'package:eeese_hackathon/view/screens/auth/profile_pic.dart';
@@ -9,6 +10,7 @@ import 'package:eeese_hackathon/view/screens/events/events_screens.dart';
 import 'package:eeese_hackathon/view/screens/onboarding_screen.dart';
 import 'package:eeese_hackathon/view/screens/home/home.dart';
 import 'package:eeese_hackathon/view/screens/splash_screen.dart';
+import 'package:eeese_hackathon/view/screens/virtual_ticket.dart';
 import 'package:get/get.dart';
 
 import '../controllers/home_controller.dart';
@@ -24,6 +26,8 @@ class AppRouter {
   static const String committees = '/committees';
   static const String splash = '/splash';
   static const String addEvent = '/add_event';
+  static const String account = '/account';
+  static const String ticket = '/ticket';
 
   static String getLogin() => login;
   static String getSignup() => signup;
@@ -35,6 +39,8 @@ class AppRouter {
   static String getCommittees() => committees;
   static String getSplash() => splash;
   static String getAddEvent() => addEvent;
+  static String getAccount() => account;
+  static String getTicket() => ticket;
 
   static List<GetPage> routs = [
     GetPage(
@@ -56,7 +62,17 @@ class AppRouter {
         page: (() => const ProfilePictureScreen())),
     GetPage(name: onboarding, page: (() => const OnboardingScreen())),
     GetPage(name: committees, page: (() => const CommitteesScreen())),
-    GetPage(name: splash, page: (() => const SplashScreen())),
+    GetPage(
+      name: splash,
+      page: (() => const SplashScreen()),
+      binding: AuthScreensBinding(),
+    ),
     GetPage(name: addEvent, page: (() => const AddEventScreen())),
+    GetPage(
+      name: account,
+      page: (() => const AccountScreen()),
+      binding: AuthScreensBinding(),
+    ),
+    GetPage(name: ticket, page: (() => const VirtualTicket())),
   ];
 }

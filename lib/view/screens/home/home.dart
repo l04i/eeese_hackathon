@@ -5,8 +5,8 @@ import 'package:eeese_hackathon/utils/colors.dart';
 import 'package:eeese_hackathon/utils/dimensions.dart';
 import 'package:eeese_hackathon/utils/style.dart';
 import 'package:eeese_hackathon/view/screens/events/events_screens.dart';
+import 'package:eeese_hackathon/view/screens/account_screen.dart';
 import 'package:eeese_hackathon/view/screens/search/search.dart';
-import 'package:eeese_hackathon/view/widgets/app_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -19,7 +19,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<Widget> _screens = [Home(), SearchScreen()];
+  final List<Widget> _screens = [
+    Home(),
+    SearchScreen(),
+    Text("11"),
+    const AccountScreen()
+  ];
   int _currentScreen = 0;
 
   @override
@@ -55,10 +60,14 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: Icons.calendar_month_outlined,
               text: 'My Events',
             ),
-            const GButton(
-              icon: Icons.more_horiz_outlined,
-              text: '',
-            ),
+            GButton(
+                icon: Icons.person,
+                text: 'Profile',
+                onPressed: () {
+                  setState(() {
+                    _currentScreen = 3;
+                  });
+                }),
           ]),
         ),
         body: _screens[_currentScreen]);
@@ -205,7 +214,7 @@ class Home extends StatelessWidget {
               } else {
                 return ListView.builder(
                     shrinkWrap: true,
-                    physics: ClampingScrollPhysics(),
+                    physics: const ClampingScrollPhysics(),
                     itemCount: snapshot.data!.docs.length,
                     itemBuilder: ((context, index) {
                       QueryDocumentSnapshot snapp = snapshot.data!.docs[index];

@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'package:eeese_hackathon/controllers/auth_controller.dart';
 import 'package:eeese_hackathon/utils/dimensions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -18,10 +20,9 @@ class _SplashPageState extends State<SplashScreen>
   void _loadResources() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     preferences.remove("showHome");
-    // AuthController authController = Get.find();
-    // String initialRoute = await authController.setInitialScreen();
-    // Timer(const Duration(seconds: 3), () => Get.toNamed(initialRoute));
-    Timer(const Duration(seconds: 3), () {});
+    AuthController authController = Get.find();
+    String initialRoute = await authController.setInitialScreen();
+    Timer(const Duration(seconds: 3), () => Get.toNamed(initialRoute));
   }
 
   @override
