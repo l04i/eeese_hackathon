@@ -10,6 +10,7 @@ import 'package:eeese_hackathon/view/screens/events/events_screens.dart';
 import 'package:eeese_hackathon/view/screens/onboarding_screen.dart';
 import 'package:eeese_hackathon/view/screens/home/home.dart';
 import 'package:eeese_hackathon/view/screens/splash_screen.dart';
+import 'package:eeese_hackathon/view/screens/virtual_ticket.dart';
 import 'package:get/get.dart';
 
 class AppRouter {
@@ -24,6 +25,7 @@ class AppRouter {
   static const String splash = '/splash';
   static const String addEvent = '/add_event';
   static const String account = '/account';
+  static const String ticket = '/ticket';
 
   static String getLogin() => login;
   static String getSignup() => signup;
@@ -36,6 +38,7 @@ class AppRouter {
   static String getSplash() => splash;
   static String getAddEvent() => addEvent;
   static String getAccount() => account;
+  static String getTicket() => ticket;
 
   static List<GetPage> routs = [
     GetPage(
@@ -66,5 +69,6 @@ class AppRouter {
       page: (() => const AccountScreen()),
       binding: AuthScreensBinding(),
     ),
+    GetPage(name: ticket, page: (() => const VirtualTicket())),
   ];
 }
